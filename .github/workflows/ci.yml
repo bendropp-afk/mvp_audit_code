@@ -25,6 +25,11 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Debug file structure
+        run: |
+          pwd
+          ls -R .
+
       - name: Run security audit
         run: |
           source venv/bin/activate
