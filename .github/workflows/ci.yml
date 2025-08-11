@@ -28,8 +28,7 @@ jobs:
       - name: Run security audit
         run: |
           python - <<EOF
-import os
-import json
+import os, json
 from backend.parsers.python_parser import parse_python_code
 from backend.detectors.sql_injection import SQLInjectionDetector
 from backend.reporting.vulnerability_reporter import VulnerabilityReporter
