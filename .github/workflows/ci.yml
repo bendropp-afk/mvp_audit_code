@@ -28,9 +28,11 @@ jobs:
       - name: Run security audit
         run: |
           source venv/bin/activate
+          export PYTHONPATH="${{ github.workspace }}"
           python run_audit.py
 
       - name: Upload audit report
         uses: actions/upload-artifact@v4
         with:
           name: security-audit-report
+          path: audit_report.json
