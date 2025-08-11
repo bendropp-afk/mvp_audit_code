@@ -25,9 +25,9 @@ jobs:
           pip install --upgrade pip
           pip install -r backend/requirements.txt
 
-            - name: Run security audit
+      - name: Run security audit
         run: |
-        python - <<EOF
+          python - <<EOF
 import os
 import json
 from backend.parsers.python_parser import parse_python_code
@@ -46,8 +46,7 @@ for root, _, files in os.walk("backend"):
 report = VulnerabilityReporter().generate_report(vulns, {"repository": os.getenv("GITHUB_REPOSITORY")})
 with open("audit_report.json", "w", encoding="utf-8") as out:
     json.dump(report, out, indent=2)
-       EOF
-
+EOF
 
       - name: Upload audit report
         uses: actions/upload-artifact@v3
